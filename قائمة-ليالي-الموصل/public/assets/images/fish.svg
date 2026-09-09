@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<defs><radialGradient id="plateF" cx="50%" cy="45%" r="60%"><stop offset="0%" stop-color="#fffdf8"/><stop offset="70%" stop-color="#f3e9d8"/><stop offset="100%" stop-color="#d8c6a3"/></radialGradient>
+<linearGradient id="fishBody" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e2b26a"/><stop offset="60%" stop-color="#a86a2c"/><stop offset="100%" stop-color="#6b3f16"/></linearGradient></defs>
+<rect width="400" height="300" fill="#f8f4ef"/>
+<ellipse cx="200" cy="175" rx="170" ry="100" fill="url(#plateF)" stroke="#c9a96b" stroke-width="3"/>
+<ellipse cx="200" cy="175" rx="140" ry="78" fill="#fbf6ec" stroke="#e3d3ac" stroke-width="2"/>
+<path d="M90 175 Q140 120 220 145 Q300 165 330 175 Q300 185 220 205 Q140 230 90 175Z" fill="url(#fishBody)" stroke="#4a260c" stroke-width="2"/>
+<path d="M330 175 L365 150 L365 200 Z" fill="#8a4d1e"/>
+<g stroke="#5c3410" stroke-width="1.5" opacity="0.5">
+<path d="M150 150 Q180 175 150 200"/><path d="M180 143 Q215 175 180 207"/><path d="M215 148 Q245 175 215 202"/><path d="M250 155 Q275 175 250 195"/>
+</g>
+<circle cx="130" cy="165" r="4" fill="#2a1608"/>
+<path d="M250 222 q28 -8 55 5 q-8 20 -38 20 q-24 0 -17 -25z" fill="#3f7a34"/>
+<circle cx="150" cy="230" r="6" fill="#c94b2b"/><circle cx="168" cy="234" r="6" fill="#c94b2b"/>
+<text x="200" y="285" text-anchor="middle" font-family="Tahoma, sans-serif" font-size="14" fill="#8a6d3b">ليالي الموصل</text>
+</svg>

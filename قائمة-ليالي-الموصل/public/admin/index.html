@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>لوحة تحكم ليالي الموصل</title>
+<link rel="icon" href="../assets/images/logo.svg">
+<link rel="stylesheet" href="../assets/css/shared.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section id="loginScreen" class="login-screen">
+  <div class="login-box pop-in">
+    <img src="../assets/images/logo.svg" class="login-logo" alt="">
+    <h2>⚙️ لوحة تحكم ليالي الموصل</h2>
+    <input type="password" id="loginPass" placeholder="كلمة سر المدير" autocomplete="off">
+    <button class="btn" id="btnLogin">دخول</button>
+    <p class="login-err" id="loginErr"></p>
+  </div>
+</section>
+
+<div id="app" class="hidden">
+  <header class="topbar">
+    <span class="brand">⚙️ لوحة تحكم ليالي الموصل</span>
+    <button class="icon-btn" id="btnLogout">خروج</button>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="items">📋 الأصناف</button>
+    <button class="tab-btn" data-tab="reports">📊 التقارير</button>
+    <button class="tab-btn" data-tab="qr">🗺️ طاولات QR</button>
+    <button class="tab-btn" data-tab="settings">🔧 إعدادات</button>
+  </nav>
+
+  <!-- الأصناف -->
+  <section id="tab-items" class="tab-panel active">
+    <div class="panel-head">
+      <button class="btn" id="btnAddItem">➕ إضافة صنف</button>
+    </div>
+    <div id="itemsTable" class="items-table"></div>
+  </section>
+
+  <!-- التقارير -->
+  <section id="tab-reports" class="tab-panel">
+    <div class="panel-head">
+      <input type="date" id="reportDate">
+    </div>
+    <div class="reports-grid">
+      <div class="stat-card"><span id="repOrders">0</span><small>عدد الطلبات</small></div>
+      <div class="stat-card"><span id="repRevenue">0</span><small>إجمالي المبيعات</small></div>
+      <div class="stat-card"><span id="repPeak">-</span><small>ساعة الذروة</small></div>
+    </div>
+    <h3 class="section-sub">🏆 الأكثر مبيعاً</h3>
+    <div id="topItemsList" class="top-items-list"></div>
+    <h3 class="section-sub">📂 المبيعات حسب القسم</h3>
+    <div id="catBars" class="cat-bars"></div>
+  </section>
+
+  <!-- QR -->
+  <section id="tab-qr" class="tab-panel">
+    <p class="qr-hint">اطبع كل بطاقة وضعها على طاولتها. الزبون يفتح الكاميرا ويسكن الكود فيوصله للمنيو مباشرة مع رقم طاولته.</p>
+    <div class="panel-head no-print">
+      <button class="btn" id="btnPrintAllQr">🖨️ طباعة كل البطاقات</button>
+    </div>
+    <div id="qrGrid" class="qr-grid"></div>
+  </section>
+
+  <!-- الإعدادات -->
+  <section id="tab-settings" class="tab-panel">
+    <div class="settings-box">
+      <label>اسم المطعم</label>
+      <input type="text" id="setName">
+      <label>عدد الطاولات</label>
+      <input type="number" id="setTables" min="1" max="100">
+      <label>عنوان السيرفر على الشبكة (IP:المنفذ)</label>
+      <input type="text" id="setAddress" placeholder="مثال: 192.168.1.5:3000">
+      <button class="btn" id="btnSaveSettings">💾 حفظ الإعدادات</button>
+      <p class="settings-note">عنوان السيرفر يظهر في شاشة الطرفية (Terminal) عند تشغيل الأمر npm start. أدخله هنا حتى تعمل رموز QR بشكل صحيح على أجهزة الزبائن.</p>
+    </div>
+  </section>
+</div>
+
+<!-- نافذة إضافة/تعديل صنف -->
+<div id="itemModal" class="modal hidden">
+  <div class="modal-box">
+    <h3 id="itemModalTitle">إضافة صنف</h3>
+    <label>الاسم</label>
+    <input type="text" id="fName">
+    <label>القسم</label>
+    <select id="fCategory">
+      <option value="grills">المشاوي</option>
+      <option value="appetizers">المقبلات</option>
+      <option value="mains">أطباق رئيسية</option>
+      <option value="rice">الأرز</option>
+      <option value="drinks">المشروبات</option>
+      <option value="desserts">الحلويات</option>
+    </select>
+    <label>الوصف</label>
+    <textarea id="fDesc"></textarea>
+    <label>السعر (د.ع)</label>
+    <input type="number" id="fPrice" min="0">
+    <label>الصورة</label>
+    <div class="image-picker" id="imagePicker"></div>
+    <input type="file" id="fUpload" accept="image/*">
+    <label class="checkbox-row"><input type="checkbox" id="fAvailable" checked> متوفر حالياً</label>
+    <div class="modal-actions">
+      <button class="btn-outline" id="btnCancelItem">إلغاء</button>
+      <button class="btn btn-danger hidden" id="btnDeleteItem">حذف</button>
+      <button class="btn" id="btnSaveItem">حفظ</button>
+    </div>
+  </div>
+</div>
+
+<div id="toastHost"></div>
+
+<script src="../assets/js/qrcode.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

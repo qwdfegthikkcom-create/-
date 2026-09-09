@@ -1,0 +1,218 @@
+[
+  {
+    "id": "g1",
+    "category": "grills",
+    "name": "كباب موصلي",
+    "description": "لحم غنم مفروم مع بهارات موصلية خاصة، يقدم مع خبز طازج",
+    "price": 15000,
+    "image": "kebab.svg",
+    "available": true
+  },
+  {
+    "id": "g2",
+    "category": "grills",
+    "name": "كباب لحم غنم",
+    "description": "أسياخ لحم غنم مشوية على الفحم",
+    "price": 16000,
+    "image": "kebab.svg",
+    "available": true
+  },
+  {
+    "id": "g3",
+    "category": "grills",
+    "name": "تكة دجاج",
+    "description": "صدور دجاج متبلة ومشوية على الفحم",
+    "price": 12000,
+    "image": "tikka.svg",
+    "available": true
+  },
+  {
+    "id": "g4",
+    "category": "grills",
+    "name": "تكة لحم",
+    "description": "قطع لحم غنم متبلة ومشوية",
+    "price": 17000,
+    "image": "tikka.svg",
+    "available": true
+  },
+  {
+    "id": "g5",
+    "category": "grills",
+    "name": "كفتة مشوية",
+    "description": "كفتة لحم مفروم بالبصل والبقدونس",
+    "price": 13000,
+    "image": "kebab.svg",
+    "available": true
+  },
+  {
+    "id": "g6",
+    "category": "grills",
+    "name": "جوانح دجاج مشوية",
+    "description": "جوانح دجاج متبلة بصلصة البيت",
+    "price": 11000,
+    "image": "tikka.svg",
+    "available": true
+  },
+  {
+    "id": "g7",
+    "category": "grills",
+    "name": "مشاوي مشكل ليالي الموصل",
+    "description": "تشكيلة من الكباب والتكة والكفتة، طبق مميز للمشاركة",
+    "price": 22000,
+    "image": "kebab.svg",
+    "available": true
+  },
+  {
+    "id": "a1",
+    "category": "appetizers",
+    "name": "سلطة موصلية",
+    "description": "خضار طازجة موسمية مع صلصة الرمان",
+    "price": 5000,
+    "image": "salad.svg",
+    "available": true
+  },
+  {
+    "id": "a2",
+    "category": "appetizers",
+    "name": "دولمة ورق عنب",
+    "description": "ورق عنب محشي بالرز واللحم المفروم",
+    "price": 9000,
+    "image": "dolma.svg",
+    "available": true
+  },
+  {
+    "id": "a3",
+    "category": "appetizers",
+    "name": "حمص بطحينة",
+    "description": "حمص مهروس بالطحينة وزيت الزيتون",
+    "price": 4000,
+    "image": "salad.svg",
+    "available": true
+  },
+  {
+    "id": "a4",
+    "category": "appetizers",
+    "name": "شوربة عدس",
+    "description": "شوربة عدس أصفر ساخنة بالخضار",
+    "price": 4000,
+    "image": "soup.svg",
+    "available": true
+  },
+  {
+    "id": "m1",
+    "category": "mains",
+    "name": "مسكوف",
+    "description": "سمك الشبوط مشوي على الطريقة العراقية التقليدية",
+    "price": 25000,
+    "image": "fish.svg",
+    "available": true
+  },
+  {
+    "id": "m2",
+    "category": "mains",
+    "name": "سمك مشوي بالتوابل",
+    "description": "سمك طازج متبل ومشوي بالفرن",
+    "price": 20000,
+    "image": "fish.svg",
+    "available": true
+  },
+  {
+    "id": "m3",
+    "category": "mains",
+    "name": "قوزي لحم",
+    "description": "لحم غنم على الرز بالمكسرات والزبيب",
+    "price": 23000,
+    "image": "rice.svg",
+    "available": true
+  },
+  {
+    "id": "r1",
+    "category": "rice",
+    "name": "رز عراقي بالشعرية",
+    "description": "رز بسمتي مع الشعرية المحمصة",
+    "price": 4000,
+    "image": "rice.svg",
+    "available": true
+  },
+  {
+    "id": "r2",
+    "category": "rice",
+    "name": "برياني بالدجاج",
+    "description": "رز برياني متبل مع قطع دجاج",
+    "price": 12000,
+    "image": "rice.svg",
+    "available": true
+  },
+  {
+    "id": "d1",
+    "category": "drinks",
+    "name": "عصير ليمون بالنعناع",
+    "description": "عصير ليمون طازج مع نعناع بلدي",
+    "price": 3000,
+    "image": "juice.svg",
+    "available": true
+  },
+  {
+    "id": "d2",
+    "category": "drinks",
+    "name": "عصير برتقال طازج",
+    "description": "عصير برتقال طبيعي ١٠٠٪",
+    "price": 3500,
+    "image": "juice.svg",
+    "available": true
+  },
+  {
+    "id": "d3",
+    "category": "drinks",
+    "name": "شاي عراقي",
+    "description": "شاي أحمر أصيل يقدم في استكان",
+    "price": 1500,
+    "image": "tea.svg",
+    "available": true
+  },
+  {
+    "id": "d4",
+    "category": "drinks",
+    "name": "مشروب غازي",
+    "description": "مشروب غازي بارد",
+    "price": 1500,
+    "image": "juice.svg",
+    "available": true
+  },
+  {
+    "id": "sw1",
+    "category": "desserts",
+    "name": "بقلاوة",
+    "description": "بقلاوة بالفستق والعسل",
+    "price": 4000,
+    "image": "baklava.svg",
+    "available": true
+  },
+  {
+    "id": "sw2",
+    "category": "desserts",
+    "name": "كنافة موصلية",
+    "description": "كنافة ساخنة بالجبن والقطر",
+    "price": 5000,
+    "image": "kunafa.svg",
+    "available": true
+  },
+  {
+    "id": "sw3",
+    "category": "desserts",
+    "name": "زلابية",
+    "description": "زلابية مقرمشة مغموسة بالقطر",
+    "price": 3500,
+    "image": "baklava.svg",
+    "available": true
+  },
+  {
+    "id": "sw4",
+    "category": "desserts",
+    "name": "مهلبية",
+    "description": "حلى المهلبية بماء الورد والفستق",
+    "price": 3000,
+    "image": "kunafa.svg",
+    "available": true
+  }
+]

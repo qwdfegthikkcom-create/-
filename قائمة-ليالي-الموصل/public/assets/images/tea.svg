@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<defs><linearGradient id="teaG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c9451f"/><stop offset="100%" stop-color="#7a1f10"/></linearGradient></defs>
+<rect width="400" height="300" fill="#f8f4ef"/>
+<path d="M170 110 q-10 40 0 60 l60 0 q10 -20 0 -60 z" fill="#fdf6e8" stroke="#d8c48a" stroke-width="2"/>
+<path d="M178 130 h44 l-6 40 h-32 z" fill="url(#teaG)"/>
+<ellipse cx="200" cy="170" rx="40" ry="10" fill="#7a1f10"/>
+<path d="M160 175 q-40 5 -40 -25" stroke="#8a6d3b" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M175 105 q4 -16 -4 -28 M200 100 q4 -16 -4 -28 M225 105 q4 -16 -4 -28" stroke="#d8cbb0" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.7"/>
+<rect x="150" y="210" width="100" height="14" rx="4" fill="#c9a96b"/>
+<rect x="160" y="224" width="80" height="8" rx="3" fill="#b98b3e"/>
+<text x="200" y="285" text-anchor="middle" font-family="Tahoma, sans-serif" font-size="14" fill="#8a6d3b">ليالي الموصل</text>
+</svg>
