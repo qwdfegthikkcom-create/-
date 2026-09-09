@@ -1,0 +1,16 @@
+{
+  "name": "layali-almosul-pos",
+  "version": "1.0.0",
+  "description": "نظام طلبات وكاشير مطعم ليالي الموصل - يعمل محلياً بدون إنترنت",
+  "private": true,
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

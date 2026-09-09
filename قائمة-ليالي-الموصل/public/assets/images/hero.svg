@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+<defs>
+<linearGradient id="skyH" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#0d1b3a"/><stop offset="55%" stop-color="#1b2a4a"/><stop offset="100%" stop-color="#3a2a1a"/>
+</linearGradient>
+<radialGradient id="moonH" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#fff6da"/><stop offset="100%" stop-color="#d4a853"/>
+</radialGradient>
+<radialGradient id="glowH" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#f0c96b" stop-opacity="0.9"/><stop offset="100%" stop-color="#f0c96b" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<rect width="800" height="500" fill="url(#skyH)"/>
+<circle cx="650" cy="100" r="55" fill="url(#moonH)"/>
+<g fill="#fff6da" opacity="0.8">
+<circle cx="120" cy="70" r="2"/><circle cx="200" cy="110" r="1.5"/><circle cx="300" cy="60" r="2"/><circle cx="400" cy="90" r="1.5"/><circle cx="500" cy="50" r="2"/><circle cx="80" cy="150" r="1.5"/><circle cx="250" cy="140" r="1.5"/>
+</g>
+<g opacity="0.9">
+<path d="M0 340 L0 260 Q40 240 80 260 L80 340 Z" fill="#241a12"/>
+<path d="M100 360 L100 220 Q160 195 220 220 L220 360 Z" fill="#2c1f14"/>
+<circle cx="160" cy="180" r="10" fill="#e8b23c"/>
+<path d="M240 350 L240 250 Q280 232 320 250 L320 350 Z" fill="#241a12"/>
+<path d="M680 360 L680 210 Q740 185 800 210 L800 360 Z" fill="#2c1f14"/>
+<circle cx="740" cy="170" r="10" fill="#e8b23c"/>
+<path d="M580 345 L580 255 Q615 240 650 255 L650 345 Z" fill="#241a12"/>
+</g>
+<rect x="0" y="345" width="800" height="155" fill="#12213f"/>
+<g transform="translate(400,300)">
+<ellipse cx="0" cy="150" rx="230" ry="22" fill="#0a1226" opacity="0.6"/>
+<rect x="-6" y="20" width="12" height="90" fill="#3a2a12"/>
+<path d="M-55 20 Q0 -70 55 20 Q40 40 0 45 Q-40 40 -55 20 Z" fill="#d4a853"/>
+<path d="M-55 20 Q0 -70 55 20" fill="none" stroke="#8a6d3b" stroke-width="2"/>
+<ellipse cx="0" cy="-5" rx="30" ry="14" fill="url(#glowH)"/>
+<rect x="-18" y="-28" width="36" height="26" rx="4" fill="#8a6d3b"/>
+<circle cx="0" cy="-34" r="7" fill="#d4a853"/>
+</g>
+<text x="400" y="440" text-anchor="middle" font-family="Tahoma, sans-serif" font-size="46" fill="#f5f0e8" font-weight="bold">ليالي الموصل</text>
+<text x="400" y="472" text-anchor="middle" font-family="Tahoma, sans-serif" font-size="18" fill="#d4a853">أصالة الموصل في كل لقمة</text>
+</svg>

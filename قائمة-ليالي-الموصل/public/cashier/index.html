@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>كاشير ليالي الموصل</title>
+<link rel="icon" href="../assets/images/logo.svg">
+<link rel="stylesheet" href="../assets/css/shared.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- تسجيل الدخول -->
+<section id="loginScreen" class="login-screen">
+  <div class="login-box pop-in">
+    <img src="../assets/images/logo.svg" class="login-logo" alt="">
+    <h2>💰 كاشير ليالي الموصل</h2>
+    <input type="password" id="loginPass" placeholder="كلمة السر" autocomplete="off">
+    <button class="btn" id="btnLogin">دخول</button>
+    <p class="login-err" id="loginErr"></p>
+  </div>
+</section>
+
+<!-- لوحة الكاشير -->
+<div id="app" class="hidden">
+  <header class="topbar">
+    <span class="brand">💰 كاشير ليالي الموصل</span>
+    <button class="icon-btn" id="btnLogout">خروج</button>
+  </header>
+
+  <div class="summary-bar">
+    <div class="summary-item"><span id="sumOrders">0</span><small>طلبات اليوم</small></div>
+    <div class="summary-item"><span id="sumRevenue">0</span><small>إجمالي اليوم</small></div>
+  </div>
+
+  <section class="section">
+    <h3 class="section-title new-title">🔔 طلبات جديدة</h3>
+    <div id="listNew" class="orders-list"></div>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title">⏳ قيد التحضير</h3>
+    <div id="listPreparing" class="orders-list"></div>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title">🟢 جاهزة للتسليم</h3>
+    <div id="listReady" class="orders-list"></div>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title">🪑 حالة الطاولات</h3>
+    <div id="tableGrid" class="tables-grid"></div>
+  </section>
+</div>
+
+<!-- نافذة الفاتورة -->
+<div id="invoiceModal" class="modal hidden">
+  <div class="modal-box">
+    <div id="invoiceContent" class="invoice-print"></div>
+    <div class="modal-actions no-print">
+      <button class="btn-outline" id="btnCloseInvoice">إغلاق</button>
+      <button class="btn" id="btnPrintInvoice">🖨️ طباعة الفاتورة</button>
+      <button class="btn btn-success" id="btnMarkPaid">💵 تم الدفع كاش</button>
+    </div>
+  </div>
+</div>
+
+<div id="toastHost"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

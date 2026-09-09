@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>ليالي الموصل - المنيو</title>
+<link rel="icon" href="../assets/images/logo.svg">
+<link rel="stylesheet" href="../assets/css/shared.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- شاشة الترحيب -->
+<section id="screen-welcome" class="screen active">
+  <div class="hero-wrap fade-in">
+    <img src="../assets/images/hero.svg" alt="ليالي الموصل" class="hero-img">
+  </div>
+  <div class="welcome-body fade-in">
+    <h1 id="welcomeName">ليالي الموصل</h1>
+    <p class="welcome-sub">أهلاً بيك ضيفنا العزيز</p>
+    <div id="tableBadgeWrap"></div>
+    <button class="btn btn-open" id="btnOpenMenu">📋 فتح المنيو</button>
+  </div>
+</section>
+
+<!-- شاشة اختيار الطاولة (احتياط اذا ما وصل رقم الطاولة) -->
+<section id="screen-table" class="screen">
+  <div class="table-select fade-in">
+    <h2>الرجاء اختيار رقم الطاولة</h2>
+    <div id="tableGrid" class="table-grid"></div>
+  </div>
+</section>
+
+<!-- شاشة الأقسام -->
+<section id="screen-categories" class="screen">
+  <header class="topbar">
+    <span class="table-pill" id="tablePillCats"></span>
+    <span class="brand">🏮 ليالي الموصل</span>
+  </header>
+  <div class="cat-grid" id="catGrid"></div>
+  <div class="cart-fab-wrap"></div>
+</section>
+
+<!-- شاشة الأصناف -->
+<section id="screen-items" class="screen">
+  <header class="topbar">
+    <button class="icon-btn" id="btnBackToCats">◄ رجوع</button>
+    <span class="brand" id="catTitle"></span>
+  </header>
+  <div class="items-list" id="itemsList"></div>
+</section>
+
+<!-- شاشة السلة -->
+<section id="screen-cart" class="screen">
+  <header class="topbar">
+    <button class="icon-btn" id="btnBackFromCart">◄ رجوع</button>
+    <span class="brand">🛒 طلبك</span>
+  </header>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-footer">
+    <textarea id="generalNote" placeholder="📝 ملاحظات عامة (مثلاً: خبز زيادة...)"></textarea>
+    <div class="cart-total-row">
+      <span>المجموع</span>
+      <span id="cartTotal">٠ د.ع</span>
+    </div>
+    <button class="btn btn-send" id="btnSendOrder">📤 إرسال الطلب</button>
+  </div>
+</section>
+
+<!-- شاشة التأكيد -->
+<section id="screen-confirm" class="screen">
+  <div class="confirm-body pop-in">
+    <div class="check-circle"><span id="checkIcon">✅</span></div>
+    <h2 id="confirmTitle">تم إرسال طلبك بنجاح!</h2>
+    <p>رقم الطلب: <b id="confOrderNum"></b></p>
+    <p>طاولة: <b id="confTable"></b></p>
+    <p class="status-line" id="statusLine">⏳ بانتظار تأكيد المطعم</p>
+    <p class="cash-note">💵 الدفع كاش عند الكاشير</p>
+    <button class="btn" id="btnNewOrder">📋 طلب جديد</button>
+  </div>
+</section>
+
+<!-- سلة عائمة -->
+<button id="cartFab" class="cart-fab hidden">
+  🛒 <span id="cartFabCount" class="badge">0</span>
+  <span id="cartFabTotal"></span>
+</button>
+
+<div id="toastHost"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

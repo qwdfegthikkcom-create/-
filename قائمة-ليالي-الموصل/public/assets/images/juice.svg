@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<defs><linearGradient id="glassJ" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f6d43c"/><stop offset="100%" stop-color="#e8a020"/></linearGradient></defs>
+<rect width="400" height="300" fill="#f8f4ef"/>
+<path d="M150 90 h100 l-14 160 h-72 z" fill="#eef7f9" stroke="#bcd8dd" stroke-width="3" opacity="0.5"/>
+<path d="M158 130 h84 l-11 118 h-62 z" fill="url(#glassJ)"/>
+<g fill="#fff" opacity="0.35"><rect x="168" y="140" width="8" height="90" rx="4"/></g>
+<circle cx="180" cy="150" r="6" fill="#ffe27a"/><circle cx="220" cy="165" r="5" fill="#ffe27a"/>
+<path d="M235 95 q18 -20 4 -40" stroke="#3f7a34" stroke-width="6" fill="none" stroke-linecap="round"/>
+<rect x="196" y="60" width="8" height="45" rx="4" fill="#e8482f" transform="rotate(-18 200 82)"/>
+<circle cx="205" cy="60" r="5" fill="#e8482f"/>
+<text x="200" y="285" text-anchor="middle" font-family="Tahoma, sans-serif" font-size="14" fill="#8a6d3b">ليالي الموصل</text>
+</svg>

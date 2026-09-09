@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<defs><radialGradient id="plateR" cx="50%" cy="45%" r="60%"><stop offset="0%" stop-color="#fffdf8"/><stop offset="70%" stop-color="#f3e9d8"/><stop offset="100%" stop-color="#d8c6a3"/></radialGradient></defs>
+<rect width="400" height="300" fill="#f8f4ef"/>
+<ellipse cx="200" cy="175" rx="170" ry="100" fill="url(#plateR)" stroke="#c9a96b" stroke-width="3"/>
+<ellipse cx="200" cy="175" rx="140" ry="78" fill="#fbf6ec" stroke="#e3d3ac" stroke-width="2"/>
+<path d="M110 175 Q200 120 290 175 Q200 230 110 175Z" fill="#f4e0a8"/>
+<g fill="#e0be6e"><circle cx="150" cy="165" r="3"/><circle cx="170" cy="180" r="3"/><circle cx="195" cy="150" r="3"/><circle cx="220" cy="172" r="3"/><circle cx="245" cy="160" r="3"/><circle cx="180" cy="195" r="3"/><circle cx="225" cy="192" r="3"/></g>
+<g fill="#c94b2b"><circle cx="160" cy="158" r="3.5"/><circle cx="210" cy="163" r="3.5"/><circle cx="250" cy="178" r="3.5"/><circle cx="190" cy="182" r="3.5"/></g>
+<g stroke="#8a4d12" stroke-width="3" stroke-linecap="round"><path d="M195 145 v-16"/><path d="M215 148 v-14"/></g>
+<circle cx="230" cy="205" r="14" fill="#8a3a1e"/>
+<text x="200" y="285" text-anchor="middle" font-family="Tahoma, sans-serif" font-size="14" fill="#8a6d3b">ليالي الموصل</text>
+</svg>

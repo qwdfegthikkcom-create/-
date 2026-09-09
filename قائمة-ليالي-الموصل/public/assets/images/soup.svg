@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<defs><radialGradient id="bowlS" cx="50%" cy="40%" r="65%"><stop offset="0%" stop-color="#fffdf8"/><stop offset="80%" stop-color="#efe2c5"/><stop offset="100%" stop-color="#cdb488"/></radialGradient></defs>
+<rect width="400" height="300" fill="#f8f4ef"/>
+<path d="M90 150 Q90 235 200 235 Q310 235 310 150 Z" fill="url(#bowlS)" stroke="#c9a96b" stroke-width="3"/>
+<ellipse cx="200" cy="150" rx="110" ry="34" fill="#d98a3a"/>
+<ellipse cx="200" cy="146" rx="95" ry="26" fill="#e8a34a"/>
+<g fill="#c94b2b" opacity="0.85"><circle cx="160" cy="140" r="6"/><circle cx="230" cy="150" r="6"/><circle cx="200" cy="132" r="5"/></g>
+<path d="M150 120 q6 -14 0 -24 M200 112 q6 -14 0 -24 M250 120 q6 -14 0 -24" stroke="#d8cbb0" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.7"/>
+<path d="M300 175 q22 -6 28 10 q-10 12 -26 4z" fill="#8a4d12"/>
+<text x="200" y="285" text-anchor="middle" font-family="Tahoma, sans-serif" font-size="14" fill="#8a6d3b">ليالي الموصل</text>
+</svg>

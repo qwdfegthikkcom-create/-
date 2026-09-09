@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<defs>
+<radialGradient id="plateK" cx="50%" cy="45%" r="60%">
+<stop offset="0%" stop-color="#fffdf8"/><stop offset="70%" stop-color="#f3e9d8"/><stop offset="100%" stop-color="#d8c6a3"/>
+</radialGradient>
+<linearGradient id="meatK" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#8a3a1e"/><stop offset="50%" stop-color="#5e2313"/><stop offset="100%" stop-color="#3d150c"/>
+</linearGradient>
+<linearGradient id="charK" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0%" stop-color="#2a0e08"/><stop offset="100%" stop-color="#5e2313"/>
+</linearGradient>
+</defs>
+<rect width="400" height="300" fill="#f8f4ef"/>
+<ellipse cx="200" cy="175" rx="170" ry="100" fill="url(#plateK)" stroke="#c9a96b" stroke-width="3"/>
+<ellipse cx="200" cy="175" rx="140" ry="78" fill="#fbf6ec" stroke="#e3d3ac" stroke-width="2"/>
+<g stroke="#b98b3e" stroke-width="5" stroke-linecap="round">
+<line x1="80" y1="150" x2="330" y2="150"/>
+<line x1="80" y1="205" x2="330" y2="205"/>
+</g>
+<g>
+<rect x="95" y="128" width="230" height="34" rx="14" fill="url(#meatK)"/>
+<rect x="95" y="128" width="230" height="10" rx="5" fill="url(#charK)" opacity="0.6"/>
+<rect x="95" y="184" width="230" height="34" rx="14" fill="url(#meatK)"/>
+<rect x="95" y="184" width="230" height="10" rx="5" fill="url(#charK)" opacity="0.6"/>
+<g fill="#2a0e08" opacity="0.55">
+<circle cx="130" cy="145" r="3"/><circle cx="170" cy="140" r="3"/><circle cx="215" cy="148" r="3"/><circle cx="260" cy="141" r="3"/><circle cx="300" cy="147" r="3"/>
+<circle cx="140" cy="201" r="3"/><circle cx="185" cy="196" r="3"/><circle cx="230" cy="204" r="3"/><circle cx="275" cy="197" r="3"/>
+</g>
+</g>
+<g fill="#7a1f1f">
+<circle cx="110" cy="235" r="9"/><circle cx="135" cy="240" r="9"/><circle cx="160" cy="234" r="9"/>
+</g>
+<path d="M250 220 q30 -10 60 5 q-10 22 -40 22 q-25 0 -20 -27 z" fill="#3f7a34"/>
+<text x="200" y="285" text-anchor="middle" font-family="Tahoma, sans-serif" font-size="14" fill="#8a6d3b">ليالي الموصل</text>
+</svg>

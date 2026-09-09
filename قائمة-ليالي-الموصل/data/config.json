@@ -1,0 +1,8 @@
+{
+  "restaurantName": "ليالي الموصل",
+  "tableCount": 20,
+  "cashierPassword": "cashier123",
+  "adminPassword": "admin123",
+  "nextOrderNumber": 1,
+  "serverAddress": ""
+}
