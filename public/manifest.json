@@ -2,7 +2,7 @@
   "name": "كافي صيف",
   "short_name": "كافي صيف",
   "description": "منيو وكاشير مطعم كافي صيف — يعمل بدون إنترنت",
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#FBF6EC",
   "theme_color": "#B5502C",

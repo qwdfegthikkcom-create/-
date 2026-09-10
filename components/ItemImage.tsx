@@ -9,8 +9,6 @@ const FALLBACK_ICONS: Record<string, string> = {
   drinks: '🥤',
 }
 
-const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || ''
-
 export default function ItemImage({
   src,
   alt,
@@ -37,7 +35,7 @@ export default function ItemImage({
   // eslint-disable-next-line @next/next/no-img-element
   return (
     <img
-      src={`${BASE_PATH}${src}`}
+      src={src}
       alt={alt}
       className={className}
       loading="lazy"
