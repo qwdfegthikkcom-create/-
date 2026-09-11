@@ -1,11 +1,14 @@
 // Service worker بسيط: يخزن الصفحة الرئيسية وأصول التطبيق كاش أول مرة تفتح فيها
 // بعدها يفتح الموقع حتى بدون إنترنت (Cache First مع رجوع للشبكة لو الملف غير مخزن)
 const CACHE_NAME = 'cafesayf-cache-v1'
-const APP_SHELL = ['/', '/manifest.json']
 
 self.addEventListener('install', (event) => {
+  // نشتق مسار الأساس (basePath) من نطاق تسجيل service worker نفسه، حتى يشتغل
+  // بشكل صحيح سواء نُشر الموقع على جذر الدومين أو تحت مسار فرعي (مثل GitHub Pages)
+  const base = new URL(self.registration.scope).pathname.replace(/\/$/, '')
+  const appShell = [base + '/', base + '/manifest.json']
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)).catch(() => {})
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(appShell)).catch(() => {})
   )
   self.skipWaiting()
 })

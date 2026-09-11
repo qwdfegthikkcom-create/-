@@ -14,10 +14,12 @@ const body = Tajawal({
   variable: '--font-body',
 })
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
 export const metadata = {
   title: 'كافي صيف',
   description: 'منيو وكاشير مطعم كافي صيف — يعمل بدون إنترنت',
-  manifest: '/manifest.json',
+  manifest: `${basePath}/manifest.json`,
   themeColor: '#B5502C',
 }
 
@@ -31,7 +33,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             __html: `
               if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function () {
-                  navigator.serviceWorker.register('/sw.js').catch(function () {});
+                  navigator.serviceWorker.register('${basePath}/sw.js').catch(function () {});
                 });
               }
             `,
