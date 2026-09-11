@@ -6,7 +6,10 @@
 <title>كافي صيف</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+<!-- Loaded as non-blocking preload so the app stays instantly usable offline; the decorative font
+     simply swaps in later if/when this succeeds, instead of stalling the whole page on a stylesheet. -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@400;500;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@400;500;700;900&display=swap"></noscript>
 <style>
 :root{
   --sand-light:#f6ecd9;
@@ -88,7 +91,7 @@ header.hero .divider{
 
 /* ===== Cashier corner button ===== */
 .cashier-btn{
-  position:fixed;top:16px;left:16px;z-index:50;
+  position:fixed;top:16px;left:16px;z-index:56;
   background:var(--night);color:var(--gold);
   border:2px solid var(--gold);
   border-radius:16px;
@@ -297,11 +300,79 @@ footer{
 @media (max-width:480px){
   .cashier-btn span.label{display:none;}
 }
+
+/* ===== Welcome / table select screen ===== */
+#welcomeScreen{
+  position:fixed;inset:0;z-index:55;
+  background:linear-gradient(160deg,var(--night) 0%,#4a2f1c 60%,var(--terracotta-dark) 130%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:24px;text-align:center;color:var(--cream);
+  transition:opacity .4s ease, visibility .4s ease;
+}
+#welcomeScreen.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+#welcomeScreen h1{font-family:'Lalezar';font-size:clamp(2.4rem,9vw,3.6rem);color:var(--gold);margin-bottom:6px;}
+#welcomeScreen p.sub{color:var(--sand-light);margin-bottom:22px;font-size:1rem;}
+.table-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
+  max-width:380px;width:100%;margin-bottom:18px;
+}
+@media (min-width:480px){
+  .table-grid{grid-template-columns:repeat(5,1fr);max-width:420px;}
+}
+.table-btn{
+  aspect-ratio:1;border-radius:14px;border:2px solid var(--gold);background:rgba(255,255,255,.06);
+  color:var(--gold);font-weight:800;font-size:1.1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s ease;
+}
+.table-btn:hover{background:var(--gold);color:var(--night);transform:translateY(-2px) scale(1.05);}
+.skip-cashier-link{color:var(--sand-light);opacity:.75;font-size:.85rem;text-decoration:underline;background:none;border:none;cursor:pointer;margin-top:6px;}
+.table-badge{
+  position:fixed;top:16px;right:16px;z-index:56;
+  background:var(--night);color:var(--gold);border:2px solid var(--gold);
+  border-radius:16px;padding:10px 14px;font-weight:800;font-size:.9rem;
+  cursor:pointer;box-shadow:var(--shadow);
+}
+
+/* ===== Items management (cashier) ===== */
+.item-row{
+  display:flex;gap:10px;align-items:center;background:var(--sand-light);
+  border-radius:12px;padding:8px 10px;margin-bottom:8px;
+}
+.item-row .thumb{
+  width:46px;height:46px;border-radius:10px;object-fit:cover;flex:0 0 auto;background:var(--sand-dark);
+  display:flex;align-items:center;justify-content:center;font-size:1.4rem;overflow:hidden;
+}
+.item-row .thumb img{width:100%;height:100%;object-fit:cover;}
+.item-row .info{flex:1;min-width:0;}
+.item-row .info h4{font-size:.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.item-row .info small{color:var(--night-light);}
+.item-row .item-actions{display:flex;gap:4px;flex:0 0 auto;}
+.icon-btn{
+  width:30px;height:30px;border-radius:8px;border:none;background:var(--night);color:var(--gold);
+  cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;
+}
+.icon-btn.danger{background:var(--red);color:#fff;}
+.hidden-file{display:none;}
+.add-item-form{
+  background:var(--sand-light);border-radius:12px;padding:12px;margin-bottom:14px;
+}
+.add-item-form select{width:100%;padding:9px 10px;border-radius:10px;border:2px solid var(--sand-dark);margin-bottom:10px;font-family:inherit;background:#fff;}
 </style>
 </head>
 <body>
 
 <div class="dune-bg"></div>
+
+<!-- Welcome / table selection screen -->
+<div id="welcomeScreen">
+  <h1 class="logo-font">كافي صيف</h1>
+  <p class="sub">أهلاً بيك 🌙 اختر رقم طاولتك للمتابعة</p>
+  <div class="table-grid" id="tableGrid"></div>
+  <button class="skip-cashier-link" id="skipWelcome">متابعة بدون اختيار طاولة</button>
+</div>
+
+<button class="table-badge" id="tableBadge" style="display:none;" title="تغيير الطاولة"></button>
 
 <button class="cashier-btn" id="cashierBtn" title="دخول الكاشير">
   <span class="dot"></span>
@@ -388,9 +459,11 @@ footer{
   <div class="panel-body">
     <div class="cashier-tabs">
       <button class="active" data-ctab="orders">الطلبات</button>
+      <button data-ctab="items">الأصناف</button>
       <button data-ctab="reports">التقارير</button>
     </div>
     <div id="ordersView"></div>
+    <div id="itemsView" style="display:none;"></div>
     <div id="reportsView" style="display:none;"></div>
   </div>
 </div>
@@ -409,7 +482,7 @@ const CATS = [
   {id:'sweets', name:'الحلويات', icon:'🍰'},
 ];
 
-const ITEMS = [
+const DEFAULT_ITEMS = [
   {id:1, cat:'grills', name:'كباب موصلي', desc:'لحم غنم مفروم بالبهارات الموصلية', price:15000, img:'', emoji:'🍢'},
   {id:2, cat:'grills', name:'تكة دجاج', desc:'صدور دجاج متبلة ومشوية على الفحم', price:12000, img:'', emoji:'🍗'},
   {id:3, cat:'grills', name:'كباب حلبي', desc:'كباب حار بصلصة البندورة والفلفل', price:14000, img:'', emoji:'🌶️'},
@@ -431,8 +504,57 @@ const ITEMS = [
 let activeCat = 'grills';
 let cart = []; // {itemId, qty}
 const ORDERS_KEY = 'cafe_sayf_orders';
+const CUSTOM_ITEMS_KEY = 'cafe_sayf_custom_items';
+const ITEM_IMAGES_KEY = 'cafe_sayf_item_images';
+const TABLE_KEY = 'cafe_sayf_selected_table';
 function loadOrders(){ try{return JSON.parse(localStorage.getItem(ORDERS_KEY))||[]}catch(e){return []} }
 function saveOrders(o){ localStorage.setItem(ORDERS_KEY, JSON.stringify(o)); }
+function loadCustomItems(){ try{return JSON.parse(localStorage.getItem(CUSTOM_ITEMS_KEY))||[]}catch(e){return []} }
+function saveCustomItems(arr){ localStorage.setItem(CUSTOM_ITEMS_KEY, JSON.stringify(arr)); }
+function loadItemImages(){ try{return JSON.parse(localStorage.getItem(ITEM_IMAGES_KEY))||{}}catch(e){return {}} }
+function saveItemImages(obj){ localStorage.setItem(ITEM_IMAGES_KEY, JSON.stringify(obj)); }
+
+let ITEMS = [];
+function rebuildItems(){
+  const custom = loadCustomItems();
+  const images = loadItemImages();
+  ITEMS = DEFAULT_ITEMS.concat(custom).map(it => ({...it, img: images[it.id] || it.img || ''}));
+}
+rebuildItems();
+
+/* ===== Table selection ===== */
+let selectedTable = localStorage.getItem(TABLE_KEY) || '';
+function setSelectedTable(n){
+  selectedTable = String(n);
+  localStorage.setItem(TABLE_KEY, selectedTable);
+  updateTableUI();
+}
+function updateTableUI(){
+  const badge = document.getElementById('tableBadge');
+  const tableNumField = document.getElementById('tableNum');
+  if(selectedTable){
+    badge.style.display = 'block';
+    badge.textContent = '🪑 طاولة ' + selectedTable;
+    if(tableNumField) tableNumField.value = selectedTable;
+  } else {
+    badge.style.display = 'none';
+  }
+}
+function openWelcome(){ document.getElementById('welcomeScreen').classList.remove('hidden'); }
+function closeWelcome(){ document.getElementById('welcomeScreen').classList.add('hidden'); }
+(function initWelcome(){
+  const grid = document.getElementById('tableGrid');
+  for(let i=1;i<=20;i++){
+    const b = document.createElement('button');
+    b.className='table-btn'; b.textContent=i;
+    b.onclick = ()=>{ setSelectedTable(i); closeWelcome(); toast('طاولة رقم '+i+' ✓'); };
+    grid.appendChild(b);
+  }
+  document.getElementById('skipWelcome').onclick = closeWelcome;
+  document.getElementById('tableBadge').onclick = openWelcome;
+  if(selectedTable){ closeWelcome(); } else { openWelcome(); }
+  updateTableUI();
+})();
 
 /* ================= RENDER TABS ================= */
 const tabsEl = document.getElementById('tabs');
@@ -532,6 +654,7 @@ function renderCartPanel(){
     });
   }
   document.getElementById('cartTotal').textContent = fmt(cartTotalPrice());
+  if(selectedTable) document.getElementById('tableNum').value = selectedTable;
 }
 
 /* ================= PANELS ================= */
@@ -557,6 +680,7 @@ function toast(msg){
 document.getElementById('sendOrderBtn').onclick = ()=>{
   if(cart.length===0){ toast('السلة فارغة!'); return; }
   const table = document.getElementById('tableNum').value || '—';
+  if(document.getElementById('tableNum').value) setSelectedTable(document.getElementById('tableNum').value);
   const note = document.getElementById('orderNote').value;
   const orders = loadOrders();
   const order = {
@@ -571,7 +695,6 @@ document.getElementById('sendOrderBtn').onclick = ()=>{
   saveOrders(orders);
   cart = [];
   renderCartBadge();
-  document.getElementById('tableNum').value='';
   document.getElementById('orderNote').value='';
   closeAll();
   toast('تم إرسال طلبك بنجاح! رقم الطلب '+order.id);
@@ -631,15 +754,114 @@ function printInvoice(o){
   window.print();
 }
 
+/* ================= CASHIER: ITEMS MANAGEMENT ================= */
+function resizeImageFile(file, maxDim, cb){
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = new Image();
+    img.onload = () => {
+      let w = img.width, h = img.height;
+      if(w > h && w > maxDim){ h = Math.round(h*maxDim/w); w = maxDim; }
+      else if(h > maxDim){ w = Math.round(w*maxDim/h); h = maxDim; }
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      cb(canvas.toDataURL('image/jpeg', 0.82));
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+function setItemImage(id, dataUrl){
+  const images = loadItemImages();
+  images[id] = dataUrl;
+  saveItemImages(images);
+  rebuildItems();
+  renderGrid();
+  renderItemsView();
+  toast('تم تحديث صورة الصنف 📷');
+}
+function deleteCustomItem(id){
+  if(!confirm('حذف هذا الصنف؟')) return;
+  saveCustomItems(loadCustomItems().filter(i=>i.id!==id));
+  const images = loadItemImages(); delete images[id]; saveItemImages(images);
+  rebuildItems();
+  renderGrid();
+  renderItemsView();
+  toast('تم حذف الصنف');
+}
+function renderItemsView(){
+  const view = document.getElementById('itemsView');
+  view.innerHTML = `
+    <button class="btn-main" id="toggleAddForm" style="margin-bottom:12px;">+ إضافة صنف جديد</button>
+    <div class="add-item-form" id="addItemForm" style="display:none;">
+      <input class="field" id="newName" placeholder="اسم الصنف">
+      <select id="newCat">${CATS.map(c=>`<option value="${c.id}">${c.icon} ${c.name}</option>`).join('')}</select>
+      <input class="field" id="newPrice" type="number" min="0" placeholder="السعر (د.ع)">
+      <input class="field" id="newDesc" placeholder="وصف قصير (اختياري)">
+      <input class="field" id="newEmoji" placeholder="إيموجي احتياطي (اختياري) مثل 🍽️">
+      <label style="display:block;margin-bottom:10px;font-size:.85rem;">📷 صورة الصنف (اختياري)
+        <input class="field" id="newImageFile" type="file" accept="image/*" capture="environment">
+      </label>
+      <button class="btn-main" id="saveNewItem">حفظ الصنف</button>
+    </div>
+    <div id="itemsList"></div>`;
+  document.getElementById('toggleAddForm').onclick = ()=>{
+    const f = document.getElementById('addItemForm');
+    f.style.display = f.style.display==='none' ? 'block' : 'none';
+  };
+  document.getElementById('saveNewItem').onclick = ()=>{
+    const name = document.getElementById('newName').value.trim();
+    const price = parseInt(document.getElementById('newPrice').value, 10);
+    const cat = document.getElementById('newCat').value;
+    const desc = document.getElementById('newDesc').value.trim();
+    const emoji = document.getElementById('newEmoji').value.trim() || '🍽️';
+    if(!name || !price){ toast('لازم تكتب الاسم والسعر'); return; }
+    const id = 9000 + Date.now()%100000;
+    const custom = loadCustomItems();
+    custom.push({id, cat, name, desc: desc||'صنف جديد', price, img:'', emoji});
+    saveCustomItems(custom);
+    const file = document.getElementById('newImageFile').files[0];
+    rebuildItems(); renderGrid();
+    if(file){
+      resizeImageFile(file, 700, dataUrl => setItemImage(id, dataUrl));
+    } else {
+      renderItemsView();
+      toast('تمت إضافة الصنف ✓');
+    }
+  };
+  const list = document.getElementById('itemsList');
+  list.innerHTML = '';
+  ITEMS.forEach(it=>{
+    const row = document.createElement('div');
+    row.className = 'item-row';
+    row.innerHTML = `
+      <div class="thumb">${it.img?`<img src="${it.img}">`:it.emoji}</div>
+      <div class="info"><h4>${it.name}</h4><small>${fmt(it.price)} • ${CATS.find(c=>c.id===it.cat)?.name||''}</small></div>
+      <div class="item-actions">
+        <label class="icon-btn" title="تغيير الصورة">📷<input type="file" accept="image/*" capture="environment" class="hidden-file"></label>
+        ${it.id>=9000?'<button class="icon-btn danger" title="حذف">🗑️</button>':''}
+      </div>`;
+    row.querySelector('input[type=file]').onchange = (e)=>{
+      const file = e.target.files[0];
+      if(file) resizeImageFile(file, 700, dataUrl => setItemImage(it.id, dataUrl));
+    };
+    row.querySelector('.icon-btn.danger')?.addEventListener('click', ()=>deleteCustomItem(it.id));
+    list.appendChild(row);
+  });
+}
+
 /* ================= CASHIER: REPORTS ================= */
 document.querySelectorAll('[data-ctab]').forEach(b=>{
   b.onclick = ()=>{
     document.querySelectorAll('[data-ctab]').forEach(x=>x.classList.remove('active'));
     b.classList.add('active');
-    const isOrders = b.dataset.ctab==='orders';
-    document.getElementById('ordersView').style.display = isOrders?'block':'none';
-    document.getElementById('reportsView').style.display = isOrders?'none':'block';
-    if(!isOrders) renderReports();
+    const tab = b.dataset.ctab;
+    document.getElementById('ordersView').style.display = tab==='orders'?'block':'none';
+    document.getElementById('itemsView').style.display = tab==='items'?'block':'none';
+    document.getElementById('reportsView').style.display = tab==='reports'?'block':'none';
+    if(tab==='items') renderItemsView();
+    if(tab==='reports') renderReports();
   };
 });
 function renderReports(){
