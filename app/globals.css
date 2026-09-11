@@ -5,3 +5,42 @@
 html, body, #__next {
   height: 100%;
 }
+
+body {
+  background-color: #FBF6EC;
+}
+
+@layer utilities {
+  .fade-up-1 { animation-delay: 60ms; }
+  .fade-up-2 { animation-delay: 140ms; }
+  .fade-up-3 { animation-delay: 220ms; }
+  .fade-up-4 { animation-delay: 300ms; }
+  .fade-up-5 { animation-delay: 380ms; }
+  .fade-up-6 { animation-delay: 460ms; }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(.22,1,.36,1), transform 0.6s cubic-bezier(.22,1,.36,1);
+}
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.desert-texture {
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(197,140,63,0.10), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(181,80,44,0.10), transparent 45%);
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #D1A55F; border-radius: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+@media print {
+  body * { visibility: hidden; }
+  #invoice-print, #invoice-print * { visibility: visible; }
+  #invoice-print { position: absolute; inset: 0; }
+}
